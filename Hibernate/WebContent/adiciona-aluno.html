@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="css/adiciona-aluno.css" />
+<meta charset="UTF-8">
+<title>Adicionar Aluno</title>
+</head>
+<body>
+	<p id="head">
+		<img src="img/pix.png" width="15" height="15"> <span>C</span>adas<span>t</span>ro
+	</p>
+
+	<div id="form">
+		<form id="formAluno" action="CadastraAluno" method="POST">
+			<label for="nome">Usuário: </label>
+			<input type="text" name="nome" style="width: 155px">
+			
+			<label for="RA">RA: </label>
+			<input type="text" name="RA" style="width: 155px">
+			
+			<label for="periodo">Periodo: </label>
+			<input type="text" name="periodo" style="width: 155px">
+			
+			<label for="curso">Curso: </label>
+			<input type="text" name="curso" style="width: 155px">
+
+			<label for="email">Email: </label>
+			<input type="text" name="email" style="width: 155px">
+			
+			<label for="senha">Senha: </label>
+			<input type="password" name="senha" style="width: 155px">
+			
+			
+			<label for="senhaConfirma">Confirmar Senha:</label>
+			<input type="password" name="senhaConfirma" style="width: 155px">
+			
+			<input type="submit" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;" value="Gravar">
+			<a href="login" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;">Voltar</a>
+		</form>
+		<!-- <img id="habilton" src="img/habilton.png" style="position: absolute; left: 857px; top: 250px; bottom: 56px; right: 12; width : 42px;"> -->
+	</div>
+
+	<a style="display: scroll; position: fixed; bottom: 0px; right: 0px;"
+		title="Subir"> <img src="img/habilton.png" border="0" /></a>
+
+</body>
+</html>
