@@ -37,15 +37,12 @@ public class UsuarioDAO {
 		return false;
 	}
 	
-	public void registros(){
+	public List<Usuario> registros(){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
 		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("select a from Usuario", Usuario.class);
-		List<Usuario> lista = q.getResultList();
+		Query q = em.createQuery("select a from Usuario a", Usuario.class);
+		return q.getResultList();
 		
-		for(Usuario a: lista){
-			System.out.println(a.getNome());
-		}
 	}
 	
 }

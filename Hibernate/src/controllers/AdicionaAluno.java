@@ -9,7 +9,7 @@ import dataaccess.UsuarioDAO;
 
 public class AdicionaAluno {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response)
+	public void create(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException{
 
 		// AlunoDAO alDAO = new AlunoDAO();
@@ -26,5 +26,11 @@ public class AdicionaAluno {
 		user.persistManager(u);
 		
 	}
+	
+	public void listar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException{
+		
+	}
+	
 
 }

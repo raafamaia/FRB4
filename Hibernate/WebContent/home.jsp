@@ -36,7 +36,7 @@
 	 	$("#enviarArquivo").on('click', function(){
 		 	$("#enviarDiv").toggle();
 	 	});
-	</script>
+	</script> 
 	<p id="head">
 	<a style="display: scroll; position: fixed; bottom: 0px; right: 0px;" title="Subir"> <img src="img/habilton.png" border="0" /></a>
 </body>
