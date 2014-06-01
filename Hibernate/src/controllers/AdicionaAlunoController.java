@@ -19,7 +19,7 @@ public class AdicionaAlunoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 //		if(request.getRequestURI().contains("CadastraAluno")){
-			RequestDispatcher rd = request.getRequestDispatcher("adiciona-aluno.html");
+			RequestDispatcher rd = request.getRequestDispatcher("adiciona-aluno.jsp");
 			rd.forward(request, response);
 //		}
 	}

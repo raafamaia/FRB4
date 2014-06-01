@@ -24,7 +24,7 @@
 		<input type="submit" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;" value="Login"> <br>
 	</form>
 	<p> ou </p>
-	<a class="head" href="adiciona-aluno.html" style="font-size: 20px;">Cadastrar<span>-</span>se</a>
+	<a class="head" href="adiciona-aluno.jsp" style="font-size: 20px;">Cadastrar<span>-</span>se</a>
 
 </fieldset>
 <fieldset id="rodape">
