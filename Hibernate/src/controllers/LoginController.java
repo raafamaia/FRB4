@@ -8,14 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
 
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet(name = "login", urlPatterns = { "/login" })
+@WebServlet(name = "login", urlPatterns = { "/login", "/logout"})
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -25,8 +27,12 @@ public class LoginController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-		rd.forward(request, response);
+		try{
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			throw new ServletException("Ocorreu algum erro.", e);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,8 +40,12 @@ public class LoginController extends HttpServlet {
 			boolean autenticado = new Login().autentica(request, response);
 			
 			if (autenticado == true) {
-				request.getRequestDispatcher("home.jsp").forward(request, response);
+				HttpSession sessao = request.getSession();
+				sessao.setAttribute("username", request.getParameter("txtUsuario"));
+				
+				new HomeController().doGet(request, response);
 			}else{
+				request.setAttribute("erro","Usuário ou Senha incorretos!");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 			

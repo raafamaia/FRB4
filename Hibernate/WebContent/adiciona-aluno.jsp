@@ -13,7 +13,7 @@
 	</p>
 
 	<div id="form">
-		<form id="formAluno" action="CadastraAluno" method="POST">
+		<form id="formAluno" action="cadastro" method="POST">
 			<label for="nome">Usuário: </label>
 			<input type="text" name="nome" style="width: 155px" required>
 			
