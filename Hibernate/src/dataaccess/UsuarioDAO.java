@@ -1,6 +1,5 @@
 package dataaccess;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -14,13 +13,16 @@ import model.Usuario;
 /*TODO Refazer classe quando for feito o banco de dados*/
 public class UsuarioDAO {
 
-	private static List<Usuario> listUsuarios = new ArrayList<>();
+	private EntityManagerFactory emf;
+	private EntityManager em;
 	
-	public UsuarioDAO(){}
+	
+	public UsuarioDAO(){
+		this.emf = Persistence.createEntityManagerFactory("default");
+		this.em = emf.createEntityManager();
+	}
 	
 	public void persistManager(Usuario u){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-	    EntityManager em = emf.createEntityManager();
 	    EntityTransaction tx = em.getTransaction();
 		tx.begin();
 	    em.persist(u);
@@ -28,22 +30,9 @@ public class UsuarioDAO {
 		em.close();
 	}
 	
-	public boolean autentica(String user, String senha){
-		for (int i = 0; !listUsuarios.isEmpty() && i < listUsuarios.size(); i++) {
-			if (listUsuarios.get(i).getNome().equals(user) && listUsuarios.get(i).getSenha().equals(senha)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Usuario> registros(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
-		EntityManager em = emf.createEntityManager();
+	public List<Usuario> listar(){
 		Query q = em.createQuery("select a from Usuario a", Usuario.class);
 		return q.getResultList();
-		
 	}
 	
 }

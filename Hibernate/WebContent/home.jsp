@@ -12,6 +12,7 @@
 <body>
 	<div>
 		<p id="head">Tel<span>a</span> Ini<span>c</span>ial</p>
+		${username}
 		<!-- ID DO USUÁRIO LOGADO <input type="hidden" value="<%  %>"/> -->
 		<ul>
 			<li>
@@ -19,7 +20,6 @@
 				<div id="enviarDiv">
 					<form id="formFile" action="javascript:void(0)" method="post" action="InsertFile">
 						<input type="file" name="procurarDoc">
-						<input type="text" name="documento" placeholder="Endereço do documento...">
 						<input type="submit" name="upload" value="Enviar">
 					</form>
 				</div>
@@ -27,8 +27,8 @@
 			<li><a href="#">Fila de Arquivos</a></li>
 			<li><a href="historico-impressao.jsp">Histórico de impressão</a></li>
 			<li><a href="#">Informações da conta</a></li>
-			<li><a href="EditaAluno">Editar Perfil</a></li>
-			<li><a href="index.jsp">Sair</a></li>
+			<li><a href="cadastro">Editar Perfil</a></li>
+			<li><a href="logout">Sair</a></li>
 		</ul>
 	</div>
 	 <script>

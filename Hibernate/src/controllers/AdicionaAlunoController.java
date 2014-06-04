@@ -12,24 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CadastraAluno
  */
-@WebServlet(name = "cadastrar", urlPatterns = { "/CadastraAluno", "/EditaAluno" })
+@WebServlet(name = "cadastrar", urlPatterns = { "/cadastro", "/editar" })
 public class AdicionaAlunoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if(request.getRequestURI().contains("CadastraAluno")){
+//		if(request.getRequestURI().contains("CadastraAluno")){
 			RequestDispatcher rd = request.getRequestDispatcher("adiciona-aluno.jsp");
 			rd.forward(request, response);
-		}else if(request.getRequestURI().contains("ListaAluno")){
-			request.getRequestDispatcher("lista-usuarios").forward(request, response);
-		}
+//		}
 	}
 	
 	
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) 
 			throws ServletException, IOException {
-		if(request.getRequestURI().contains("CadastraAluno")){
+		if(request.getRequestURI().contains("cadastro")){
 			try {
 				new AdicionaAluno().create(request, response);
 			} catch (Exception e) {
@@ -38,8 +36,8 @@ public class AdicionaAlunoController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("aluno-cadastrado.jsp");
 		rd.forward(request, response);
 		}
-		else if(request.getRequestURI().contains("EditaAluno")){
-//			Nada Ainda :(
+		else if(request.getRequestURI().contains("editar")){
+			//Nada Ainda :(
 		}else{
 			RequestDispatcher rd = request.getRequestDispatcher("error.html");
 			rd.forward(request, response);
