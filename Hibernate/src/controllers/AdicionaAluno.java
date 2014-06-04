@@ -29,7 +29,6 @@ public class AdicionaAluno {
 	
 	public void listar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException{
-		
 	}
 	
 

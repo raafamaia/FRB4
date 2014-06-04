@@ -17,8 +17,8 @@
 			<li>
 				<a href="#" id="enviarArquivo" onclick="formEnviar">Enviar Arquivo</a>
 				<div id="enviarDiv">
-					<form id="formHue" action="javascript:void(0)" >
-						<input type="submit" name="procurarDoc" value="Procurar">
+					<form id="formFile" action="javascript:void(0)" method="post" action="InsertFile">
+						<input type="file" name="procurarDoc">
 						<input type="text" name="documento" placeholder="Endereço do documento...">
 						<input type="submit" name="upload" value="Enviar">
 					</form>
