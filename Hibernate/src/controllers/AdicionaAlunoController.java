@@ -33,8 +33,9 @@ public class AdicionaAlunoController extends HttpServlet {
 			} catch (Exception e) {
 				throw new ServletException("A camada model gerou uma exceção", e);
 			}
-		RequestDispatcher rd = request.getRequestDispatcher("aluno-cadastrado.jsp");
-		rd.forward(request, response);
+			request.setAttribute("msg","cadastrado com sucesso!");
+			RequestDispatcher rd = request.getRequestDispatcher("adiciona-aluno.jsp");
+			rd.forward(request, response);
 		}
 		else if(request.getRequestURI().contains("editar")){
 			//Nada Ainda :(

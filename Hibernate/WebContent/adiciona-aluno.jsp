@@ -5,6 +5,7 @@
 <head>
 <link type="text/css" rel="stylesheet" href="css/adiciona-aluno.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <title>Adicionar Aluno</title>
 </head>
 <body>
@@ -14,7 +15,10 @@
 
 	<div id="form">
 		<form id="formAluno" action="cadastro" method="POST">
-			<label for="nome">UsuÃ¡rio: </label>
+			
+			<p>${param.nome} ${msg}</p>
+			
+			<label for="nome">Usuário: </label>
 			<input type="text" name="nome" style="width: 155px" required>
 			
 			<label for="RA">RA: </label>
@@ -30,14 +34,14 @@
 			<input type="text" name="email" style="width: 155px" required>
 			
 			<label for="senha">Senha: </label>
-			<input type="password" name="senha" style="width: 155px" value= required>
+			<input type="password" name="senha" id="campoSenha" style="width: 155px" required>
 			
 			<label for="senhaConfirma">Confirmar Senha:</label>
-			<input type="password" name="senhaConfirma" style="width: 155px" required>
+			<input type="password" name="senhaConfirma" id="campoSenhaConfirma" style="width: 155px" required>
+			
+			<span id="confereSenha"></span>
 		
-			
-			
-			<input type="submit" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;" value="Gravar">
+			<input type="submit" disabled id="submit" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;" value="Gravar">
 			<a href="login" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;">Voltar</a>
 		</form>
 		<!-- <img id="habilton" src="img/habilton.png" style="position: absolute; left: 857px; top: 250px; bottom: 56px; right: 12; width : 42px;"> -->
@@ -45,6 +49,18 @@
 
 	<a style="display: scroll; position: fixed; bottom: 0px; right: 0px;"
 		title="Subir"> <img src="img/habilton.png" border="0" /></a>
-
+	<script>
+		function confere () {
+		    if($('#campoSenha').val() == $('#campoSenhaConfirma').val()){
+		        $('#confereSenha').text('Senha iguais');
+		        $('#submit').removeProp('disabled');
+		    }else{
+		        $('#confereSenha').text('Senhas não equivalentes!');
+		        $('#submit').prop('disabled', true);
+		    }
+		}
+		$('#campoSenha').on('keyup', confere);
+		$('#campoSenhaConfirma').on('keyup', confere);
+	</script>
 </body>
 </html>

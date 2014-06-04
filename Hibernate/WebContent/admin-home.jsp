@@ -15,18 +15,10 @@
 		${username}
 		<!-- ID DO USUÁRIO LOGADO <input type="hidden" value="<%  %>"/> -->
 		<ul>
-			<li>
-				<a href="#" id="enviarArquivo" onclick="formEnviar">Enviar Arquivo</a>
-				<div id="enviarDiv">
-					<form id="formFile" action="javascript:void(0)" method="post" action="InsertFile">
-						<input type="file" name="procurarDoc">
-						<input type="submit" name="upload" value="Enviar">
-					</form>
-				</div>
-			</li>
 			<li><a href="#">Fila de Arquivos</a></li>
 			<li><a href="historico-impressao.jsp">Histórico de impressão</a></li>
 			<li><a href="#">Informações da conta</a></li>
+			<li><a href="lista-usuarios.jsp">Lista de Usuários</a></li>
 			<li><a href="editar">Editar Perfil</a></li>
 			<li><a href="logout">Sair</a></li>
 		</ul>

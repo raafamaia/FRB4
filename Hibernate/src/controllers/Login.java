@@ -19,10 +19,10 @@ public class Login {
 		
 		for(Usuario user: userDao.listar()){
 			if (user.getNome().equals(usuario) && user.getSenha().equals(senha)) {
+				request.getSession().setAttribute("id", user.getId());
 				return true;
 			}
 		}
-		
 		return false;
 	}
 	

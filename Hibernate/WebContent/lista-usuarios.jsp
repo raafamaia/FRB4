@@ -1,5 +1,7 @@
+<%@page import="dataaccess.UsuarioDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +9,7 @@
 <title>Histórico de Impressão</title>
 </head>
 <body>
+<jsp:useBean id="dao" class="dataaccess.UsuarioDAO"/>
 <h1>Usuarios</h1>
 
 	<table align="center">
@@ -20,13 +23,14 @@
 		</thead>
 			<!-- FAZER TBODY COM JAVA -->
 		<tbody>
-			<% %>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
+			<c:forEach var="usuario" items="${dao.listar}" varStatus="id">
+				<tr>
+					<td>${usuario.id}</td>
+					<td>${usuario.nome}</td>
+					<td>${usuario.curso}</td>
+					<td>${usuario.periodo}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	

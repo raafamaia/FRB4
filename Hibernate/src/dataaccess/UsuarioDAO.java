@@ -30,6 +30,7 @@ public class UsuarioDAO {
 		em.close();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Usuario> listar(){
 		Query q = em.createQuery("select a from Usuario a", Usuario.class);
 		return q.getResultList();

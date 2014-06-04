@@ -9,10 +9,9 @@ import dataaccess.UsuarioDAO;
 
 public class AdicionaAluno {
 
-	public void create(HttpServletRequest request, HttpServletResponse response)
+	public void executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException{
 
-		// AlunoDAO alDAO = new AlunoDAO();
 		UsuarioDAO user = new UsuarioDAO();
 		Usuario u = new Usuario();
 
@@ -24,12 +23,6 @@ public class AdicionaAluno {
 		u.setEmail(request.getParameter("email"));
 
 		user.persistManager(u);
-		
 	}
-	
-	public void listar(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException{
-	}
-	
 
 }
