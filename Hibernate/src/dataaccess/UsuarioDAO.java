@@ -37,6 +37,7 @@ public class UsuarioDAO {
 		return false;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Usuario> registros(){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
 		EntityManager em = emf.createEntityManager();

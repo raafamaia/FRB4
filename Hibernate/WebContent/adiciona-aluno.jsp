@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <link type="text/css" rel="stylesheet" href="css/adiciona-aluno.css" />
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Adicionar Aluno</title>
 </head>
 <body>
@@ -28,10 +30,12 @@
 			<input type="text" name="email" style="width: 155px" required>
 			
 			<label for="senha">Senha: </label>
-			<input type="password" name="senha" style="width: 155px" required>
+			<input type="password" name="senha" style="width: 155px" value= required>
 			
 			<label for="senhaConfirma">Confirmar Senha:</label>
 			<input type="password" name="senhaConfirma" style="width: 155px" required>
+		
+			
 			
 			<input type="submit" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;" value="Gravar">
 			<a href="login" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;">Voltar</a>

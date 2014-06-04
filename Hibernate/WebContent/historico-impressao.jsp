@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Histórico de Impressão</title>
 </head>
-<body align="center">
+<body>
 <h1>Histórico de Impressões</h1>
 
 	<table align="center">
