@@ -19,7 +19,7 @@ public class Login {
 		
 		for(Usuario user: userDao.listar()){
 			if (user.getNome().equals(usuario) && user.getSenha().equals(senha)) {
-				request.getSession().setAttribute("id", user.getId());
+				request.getSession().setAttribute("usuario_id", user.getId());
 				return true;
 			}
 		}

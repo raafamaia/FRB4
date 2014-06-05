@@ -1,27 +1,36 @@
 package model;
 
+import javax.persistence.*;
+
+import dataaccess.UsuarioDAO;
+
+//@Entity
 public class Conta {
-	private int cod;
-	private int idUsuario;
+	
+	@Id @GeneratedValue
+	private int id;
+	
+	@OneToOne
+	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
+	private Usuario usuario;
+	
 	private double montante;
 
 	public Conta(){
-		this.cod = (int) Math.floor(Math.random() * 1000);
 		this.montante = 0;
 	}
 	
-	public Conta(int idUser) {
-		this.cod = (int) Math.floor(Math.random() * 1000);
+	public Conta(long l) {
 		this.montante = 0;
-		this.idUsuario = idUser;
+		this.usuario = new UsuarioDAO().findUserById(l);
 	}
-
+	
 	public int getCod() {
-		return cod;
+		return id;
 	}
 
 	public void setCod(int cod) {
-		this.cod = cod;
+		this.id = cod;
 	}
 
 	public double getMontante() {
@@ -32,12 +41,12 @@ public class Conta {
 		this.montante = montante;
 	}
 
-	public int getIdUsuario() {
-		return idUsuario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUsuario(Usuario idUsuario) {
+		this.usuario = idUsuario;
 	}
 	
 }

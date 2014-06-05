@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,7 +11,7 @@
 </head>
 <body>
 	<p id="head">
-		<img src="img/pix.png" width="15" height="15"> <span>C</span>adas<span>t</span>ro
+		<img src="img/pix.png" width="15" height="15"> <span>${titulo}</span>
 	</p>
 
 	<div id="form">
@@ -42,7 +43,15 @@
 			<span id="confereSenha"></span>
 		
 			<input type="submit" disabled id="submit" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;" value="Gravar">
-			<a href="login" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;">Voltar</a>
+			
+			<%if (request.getAttribute("titulo").equals("Cadastro")){%>
+				<a href="login" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;">Voltar</a>
+			<%}else if(request.getAttribute("titulo").equals("Editar")){%>
+				<a href="home" style="font-family: 'visitor_tt1_brkregular'; font-size: larger; color: #00FF00; background-color: #000000; width : 155px;">Voltar</a>
+			<%} %>
+			
+			
+			
 		</form>
 		<!-- <img id="habilton" src="img/habilton.png" style="position: absolute; left: 857px; top: 250px; bottom: 56px; right: 12; width : 42px;"> -->
 	</div>

@@ -13,15 +13,20 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class CadastraAluno
  */
 @WebServlet(name = "cadastrar", urlPatterns = { "/cadastro", "/editar" })
-public class AdicionaAlunoController extends HttpServlet {
+public class AdicionaUsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if(request.getRequestURI().contains("CadastraAluno")){
+		if(request.getRequestURI().contains("cadastro")){
+			request.setAttribute("titulo","Cadastro");
 			RequestDispatcher rd = request.getRequestDispatcher("adiciona-aluno.jsp");
 			rd.forward(request, response);
-//		}
+		}else if(request.getRequestURI().contains("editar")){
+			request.setAttribute("titulo","Editar");
+			RequestDispatcher rd = request.getRequestDispatcher("adiciona-aluno.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 	
@@ -29,7 +34,8 @@ public class AdicionaAlunoController extends HttpServlet {
 			throws ServletException, IOException {
 		if(request.getRequestURI().contains("cadastro")){
 			try {
-				new AdicionaAluno().create(request, response);
+				request.setAttribute("titulo","Cadastro");
+				new AdicionaUsuario().executa(request, response);
 			} catch (Exception e) {
 				throw new ServletException("A camada model gerou uma exceção", e);
 			}
@@ -38,7 +44,7 @@ public class AdicionaAlunoController extends HttpServlet {
 			rd.forward(request, response);
 		}
 		else if(request.getRequestURI().contains("editar")){
-			//Nada Ainda :(
+			request.setAttribute("titulo","Editar");
 		}else{
 			RequestDispatcher rd = request.getRequestDispatcher("error.html");
 			rd.forward(request, response);

@@ -8,9 +8,10 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import model.Conta;
+import model.Documento;
 import model.Usuario;
 
-/*TODO Refazer classe quando for feito o banco de dados*/
 public class UsuarioDAO {
 
 	private EntityManagerFactory emf;
@@ -22,18 +23,46 @@ public class UsuarioDAO {
 		this.em = emf.createEntityManager();
 	}
 	
-	public void persistManager(Usuario u){
+	public void inserir(Usuario u){
 	    EntityTransaction tx = em.getTransaction();
 		tx.begin();
 	    em.persist(u);
 	    tx.commit();
-		em.close();
 	}
 	
-	@SuppressWarnings("unchecked")
+	public void inserirConta(Conta u){
+	    EntityTransaction tx = em.getTransaction();
+		tx.begin();
+	    em.persist(u);
+	    tx.commit();
+	}
+	
+	public void inserirDocumento(Documento d){
+	    EntityTransaction tx = em.getTransaction();
+		tx.begin();
+	    em.persist(d);
+	    tx.commit();
+	}
+	
 	public List<Usuario> listar(){
 		Query q = em.createQuery("select a from Usuario a", Usuario.class);
 		return q.getResultList();
+	}
+	
+	public Usuario findUserById(long id){
+		Usuario user = em.find(Usuario.class, id);
+		if(user == null){
+			System.out.println("Não encontrado!");
+		}
+		return user;
+	}
+	
+	public Conta findContaByUserId(long userId){
+		Conta conta = em.find(Conta.class, userId);
+		if(conta == null){
+			System.out.println("Não encontrado!");
+		}
+		return conta;
 	}
 	
 }

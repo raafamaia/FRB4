@@ -4,15 +4,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Conta;
 import model.Usuario;
+import dataaccess.ContaDAO;
 import dataaccess.UsuarioDAO;
 
-public class AdicionaAluno {
+public class AdicionaUsuario {
 
 	public void executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException{
 
-		UsuarioDAO user = new UsuarioDAO();
+		UsuarioDAO userDao = new UsuarioDAO();
 		Usuario u = new Usuario();
 
 		u.setNome(request.getParameter("nome"));
@@ -22,7 +24,12 @@ public class AdicionaAluno {
 		u.setSenha(request.getParameter("senha"));
 		u.setEmail(request.getParameter("email"));
 
-		user.persistManager(u);
+		userDao.inserir(u);
+		
+		Conta conta = new Conta(u.getId());
+		
+		userDao.inserirConta(conta);
+		
 	}
 
 }
