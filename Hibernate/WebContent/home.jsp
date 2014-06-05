@@ -18,7 +18,7 @@
 			<li>
 				<a href="#" id="enviarArquivo" onclick="formEnviar">Enviar Arquivo</a>
 				<div id="enviarDiv">
-					<form id="formFile" action="javascript:void(0)" method="post" action="InsertFile">
+					<form id="formFile" action="javascript:void(0)" method="post" action="InsertFile" enctype="multipart/form-data">
 						<input type="file" name="procurarDoc">
 						<input type="submit" name="upload" value="Enviar">
 					</form>

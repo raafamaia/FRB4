@@ -8,7 +8,7 @@ public class Conta {
 	@Id @GeneratedValue
 	private int id;
 	@OneToOne
-	@PrimaryKeyJoinColumn(name = "cod", referencedColumnName = "id")
+	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
 	private Usuario usuario;
 	private double montante;
 

@@ -11,11 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Documento;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+import dataaccess.UsuarioDAO;
 
 /**
  * Servlet implementation class InsertFile
@@ -53,29 +57,18 @@ public class InsertFile extends HttpServlet {
 				out.println("No fields found");
 				return;
 			}
-			out.println("<table border=\"1\">");
 			while (it.hasNext()) {
 				out.println("<tr>");
 				FileItem fileItem = it.next();
 				boolean isFormField = fileItem.isFormField();
-				if (isFormField) {
-					out.println("<td>regular form field</td><td>FIELD NAME: " + fileItem.getFieldName() + 
-							"<br/>STRING: " + fileItem.getString()
-							);
-					out.println("</td>");
-				} else {
-					out.println("<td>file form field</td><td>FIELD NAME: " + fileItem.getFieldName() +
-							"<br/>STRING: " + fileItem.getString() +
-							"<br/>NAME: " + fileItem.getName() +
-							"<br/>CONTENT TYPE: " + fileItem.getContentType() +
-							"<br/>SIZE (BYTES): " + fileItem.getSize() +
-							"<br/>TO STRING: " + fileItem.toString()
-							);
-					out.println("</td>");
+				if (!isFormField) {
+					Documento doc = new Documento();
+					doc.setNome(fileItem.getFieldName());
+					doc.setSize(String.valueOf(fileItem.getSize()));
+					UsuarioDAO p = new UsuarioDAO();
+					p.persistManager(doc);
 				}
-				out.println("</tr>");
 			}
-			out.println("</table>");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		}

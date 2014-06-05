@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import model.Documento;
 import model.Usuario;
 
 /*TODO Refazer classe quando for feito o banco de dados*/
@@ -26,6 +27,14 @@ public class UsuarioDAO {
 	    EntityTransaction tx = em.getTransaction();
 		tx.begin();
 	    em.persist(u);
+	    tx.commit();
+		em.close();
+	}
+	
+	public void persistManager(Documento d){
+	    EntityTransaction tx = em.getTransaction();
+		tx.begin();
+	    em.persist(d);
 	    tx.commit();
 		em.close();
 	}
