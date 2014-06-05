@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import dataaccess.UsuarioDAO;
 
-//@Entity
+@Entity
 public class Conta {
 	
 	@Id @GeneratedValue

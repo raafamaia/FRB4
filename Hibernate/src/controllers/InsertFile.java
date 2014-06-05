@@ -1,12 +1,10 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,12 +18,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import dataaccess.UsuarioDAO;
 
-public class InsertFile extends HttpServlet {
+public class InsertFile {
 
 	
 	protected boolean inserir(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
 
 
 		boolean isMultipartContent = ServletFileUpload.isMultipartContent(request);
@@ -48,7 +45,8 @@ public class InsertFile extends HttpServlet {
 					doc.setNome(fileItem.getName());
 					doc.setSize(String.valueOf(fileItem.getSize()));
 					UsuarioDAO p = new UsuarioDAO();
-					doc.setConta(p.findContaByUserId((long) request.getAttribute("usuario_id")));
+					long id = (long) request.getSession().getAttribute("usuario_id");
+					doc.setConta(p.findContaByUserId((int) id));
 					try{
 						p.inserirDocumento(doc);
 						return true;
