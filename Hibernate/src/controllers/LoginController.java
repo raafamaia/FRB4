@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginController
@@ -40,10 +39,9 @@ public class LoginController extends HttpServlet {
 			boolean autenticado = new Login().autentica(request, response);
 			
 			if (autenticado == true) {
-				HttpSession sessao = request.getSession();
-				sessao.setAttribute("username", request.getParameter("txtUsuario"));
+				request.getSession().setAttribute("username", request.getParameter("txtUsuario"));
 				
-				new HomeController().doGet(request, response);
+				response.sendRedirect("home");
 			}else{
 				request.setAttribute("erro","Usuário ou Senha incorretos!");
 				request.getRequestDispatcher("login.jsp").forward(request, response);

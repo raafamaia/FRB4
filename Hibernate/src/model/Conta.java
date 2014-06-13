@@ -8,7 +8,7 @@ import dataaccess.UsuarioDAO;
 public class Conta {
 	
 	@Id @GeneratedValue
-	private int id;
+	private long id;
 	
 	@OneToOne
 	@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "id")
@@ -25,11 +25,11 @@ public class Conta {
 		this.usuario = new UsuarioDAO().findUserById(l);
 	}
 	
-	public int getCod() {
+	public long getId() {
 		return id;
 	}
 
-	public void setCod(int cod) {
+	public void setId(long cod) {
 		this.id = cod;
 	}
 

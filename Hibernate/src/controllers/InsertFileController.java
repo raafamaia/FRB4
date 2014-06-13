@@ -2,7 +2,6 @@ package controllers;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +23,10 @@ public class InsertFileController extends HttpServlet {
 			}else{
 				request.getSession().setAttribute("upload", "Erro ao fazer upload :/");
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
-			rd.forward(request, response);
+			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}catch(Exception e){
 			System.out.println("Erro: " + e.getMessage());
+			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}
 	}
 }

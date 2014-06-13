@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Conta;
 import model.Usuario;
-import dataaccess.ContaDAO;
 import dataaccess.UsuarioDAO;
 
 public class AdicionaUsuario {
